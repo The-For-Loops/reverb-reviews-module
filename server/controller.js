@@ -10,7 +10,29 @@ module.exports = {
         res.status(200).send(results)
       }
     })
-  }
+  },
+
+  getProductReviews: (req, res) => {
+    dbHelpers.getProductReviews((err, results) => {
+      if (err) {
+        res.status(404).send(err);
+      } else {
+        res.status(200).send(results)
+      }
+    })
+  },
+
+  getSellerReviews: (req, res) => {
+    dbHelpers.getSellerReviews((err, results) => {
+      if (err) {
+        res.status(404).send(err);
+      } else {
+        res.status(200).send(results)
+      }
+    })
+  },
+
+
 
 
 

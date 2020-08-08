@@ -25,7 +25,6 @@ const createProducts = () => {
 };
 
 const insertProducts = function() {
-  // Complete me please
   let newProdsArr = createProducts();
 
   newProdsArr.map((product) => {
@@ -34,7 +33,7 @@ const insertProducts = function() {
 
 };
 
-// insertProducts();
+insertProducts();
 
 
 // ===============PRODUCT REVIEWS=============================
@@ -69,7 +68,6 @@ const createReviews = () => {
 };
 
 const insertReviews = function() {
-  // Complete me please
   let newRewviewsArr = createReviews();
 
   newRewviewsArr.map((review) => {
@@ -83,4 +81,42 @@ insertReviews();
 
 
 
+//====================SELLER REVIEWS ============================
+
+var rating = (Math.random() * 5).toFixed(2);
+var sellDate = faker.date.between('2010-01-01', '2020-01-05').toString();
+var content = faker.lorem.sentence();
+var product_id = Math.floor(Math.random() * 100);
+var reviewer = faker.name.findName();
+
+
+const createSellerReview = () => {
+  var review = {};
+
+  review.rating = `${(Math.random() * 5).toFixed(2)}`;
+  review.content = `${faker.lorem.paragraph()}`;
+  review.product_id = `${Math.floor(Math.random() * 100)}`;
+  review.reviewer = `${faker.name.findName()}`;
+
+  return review
+};
+
+const createSellerReviews = () => {
+  let sellerReviewsArr = [];
+  for(let i = 0; i < 100; i++){
+    sellerReviewsArr.push(createReviewProduct());
+  }
+  return sellerReviewsArr;
+};
+
+const insertSellerReviews = function() {
+  let newSellerRewviewsArr = createSellerReviews();
+
+  newSellerRewviewsArr.map((review) => {
+    db.query(`INSERT INTO sellerReviews (rating, content, product_id, reviewer) VALUES (${review.rating}, "${review.content}", ${review.product_id}, "${review.reviewer}")`)
+  })
+
+};
+
+insertSellerReviews();
 

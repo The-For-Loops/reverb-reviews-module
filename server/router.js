@@ -6,4 +6,16 @@ router
 .route('/allProducts')
 .get(controller.getAllProducts)
 
+
+router
+.route('/productReviews')
+.get(controller.getProductReviews)
+
+
+router
+.route('/sellerReviews')
+.get(controller.getSellerReviews)
+
+
+
 module.exports = router;

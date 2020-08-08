@@ -23,9 +23,7 @@ CREATE TABLE productReviews (
 CREATE TABLE sellerReviews (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   rating FLOAT NOT NULL,
-  sellDate VARCHAR(200) NOT NULL,
-  content VARCHAR(255) NOT NULL,
+  content VARCHAR(500) NOT NULL,
   product_id INT NOT NULL,
-  reviewer VARCHAR(200) NOT NULL,
-  FOREIGN KEY (product_id) REFERENCES products(id)
+  reviewer VARCHAR(200) NOT NULL
 );
