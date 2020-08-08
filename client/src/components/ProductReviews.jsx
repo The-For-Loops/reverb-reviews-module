@@ -14,8 +14,8 @@ class ProductReviews extends React.Component {
   render() {
 
     return (
-      <div>
-        Reviews of the Gretsch G5265 Jet Baritone Black Sparkle
+      <div className="seller-container">
+        <h3>Reviews of the Gretsch G5265 Jet Baritone Black Sparkle</h3>
       </div>
     )
   }
