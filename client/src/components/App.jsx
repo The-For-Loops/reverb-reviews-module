@@ -12,16 +12,28 @@ class App extends React.Component {
 
   render() {
 
-    var randomName = faker.name.findName();
-    var randomEmail = faker.internet.email();
-    var content = faker.lorem.word;
+    var reviewer = faker.name.findName();
+    var title = faker.lorem.sentence();
+    var rating = (Math.random() * 5).toFixed(2);
+    var content = faker.lorem.paragraph();
+    var helpful = Math.floor(Math.random() * 10);
+    var avatar = "https://static.reverb-assets.com/assets/avatars/default-12200bad002dac7468972d9abe4d189bb04815943e33f3d1ea7d8788266624b9.jpg"
+    var product_id = Math.floor(Math.random() * 100);
+
 
 
     return (
       <div>
-        {randomName}<br></br>
-        {randomEmail}<br></br>
-        {content}
+        {reviewer}<br></br>
+        {title}<br></br>
+        {rating}<br></br>
+        {content}<br></br>
+        {helpful}<br></br>
+        {product_id}<br></br>
+        <img src={avatar} />
+
+
+
       </div>
     )
   }

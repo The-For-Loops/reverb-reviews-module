@@ -14,11 +14,10 @@ CREATE TABLE productReviews (
   reviewer VARCHAR(200) NOT NULL,
   title VARCHAR(200) NOT NULL,
   rating FLOAT NOT NULL,
-  content VARCHAR(255) NOT NULL,
+  content VARCHAR(500) NOT NULL,
   helpful INT NOT NULL,
   avatar VARCHAR(200) NOT NULL,
-  product_id INT NOT NULL,
-  FOREIGN KEY (product_id) REFERENCES products(id)
+  product_id INT NOT NULL
 );
 
 CREATE TABLE sellerReviews (
