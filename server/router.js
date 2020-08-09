@@ -8,12 +8,12 @@ router
 
 
 router
-.route('/productReviews')
+.route('/productReviews/:id')
 .get(controller.getProductReviews)
 
 
 router
-.route('/sellerReviews')
+.route('/sellerReviews/:id')
 .get(controller.getSellerReviews)
 
 

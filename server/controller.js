@@ -13,7 +13,7 @@ module.exports = {
   },
 
   getProductReviews: (req, res) => {
-    dbHelpers.getProductReviews((err, results) => {
+    dbHelpers.getProductReviews(req, (err, results) => {
       if (err) {
         res.status(404).send(err);
       } else {
@@ -23,7 +23,7 @@ module.exports = {
   },
 
   getSellerReviews: (req, res) => {
-    dbHelpers.getSellerReviews((err, results) => {
+    dbHelpers.getSellerReviews(req, (err, results) => {
       if (err) {
         res.status(404).send(err);
       } else {

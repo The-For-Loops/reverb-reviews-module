@@ -14,8 +14,9 @@ module.exports = {
     })
   },
 
-  getProductReviews: (callback) => {
-    let queryStr = `SELECT * FROM productReviews`;
+  getProductReviews: (req, callback) => {
+    let { id } = req.params;
+    let queryStr = `SELECT * FROM productReviews WHERE productReviews.product_id = ${id}`;
 
     db.query(queryStr, (err, results) => {
       if (err) {
@@ -26,8 +27,9 @@ module.exports = {
     })
   },
 
-  getSellerReviews: (callback) => {
-    let queryStr = `SELECT * FROM sellerReviews`;
+  getSellerReviews: (req, callback) => {
+    let { id } = req.params;
+    let queryStr = `SELECT * FROM sellerReviews WHERE sellerReviews.product_id = ${id}`;
 
     db.query(queryStr, (err, results) => {
       if (err) {

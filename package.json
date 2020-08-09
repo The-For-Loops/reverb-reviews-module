@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "nodemon server/index.js",
-    "react-dev": "webpack -d --watch"
+    "build": "webpack -d --watch"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
