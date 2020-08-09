@@ -31,6 +31,7 @@
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-star-rating-component": "^1.4.1"
   }
 }
