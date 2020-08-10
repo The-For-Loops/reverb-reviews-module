@@ -2,29 +2,29 @@ const db = require('./index.js');
 const faker = require('faker');
 
 //====================PRODUCTS=========================
-const brand = ['Fender', 'Gibson', 'Dean', 'Schecter', 'Epiphone', 'Squier', 'Paul Reed Smith', 'Ibanez', 'Gretsch', 'Music Man', 'Charvel', 'Gretsch'];
+let brand = ['Fender', 'Gibson', 'Dean', 'Schecter', 'Epiphone', 'Squier', 'Paul Reed Smith', 'Ibanez', 'Gretsch', 'Music Man', 'Charvel', 'Gretsch'];
 
-const model = ['Stratocaster', 'Telecaster', 'Les Paul', 'SG', 'Jazzmaster', 'Jaguar', 'Deluxe', 'Silver Jet']
+let model = ['Stratocaster', 'Telecaster', 'Les Paul', 'SG', 'Jazzmaster', 'Jaguar', 'Deluxe', 'Silver Jet']
 
-const spec = ['Vintage', 'Special', 'Flame Top', 'Solid Body', 'Hollow Body', 'Mahogany', 'Sunburst', 'Standard', 'Fixed Bridge', 'Sparkle']
+let spec = ['Vintage', 'Special', 'Flame Top', 'Solid Body', 'Hollow Body', 'Mahogany', 'Sunburst', 'Standard', 'Fixed Bridge', 'Sparkle']
 
 
-const createProduct = () => {
+let createProduct = () => {
   let product = {};
   product.item = `${brand[Math.floor(Math.random() * Math.floor(brand.length))]} ${model[Math.floor(Math.random(model.length) * Math.floor(4))]} ${spec[Math.floor(Math.random() * Math.floor(spec.length))]}`;
 
   return product
 };
 
-const createProducts = () => {
+let createProducts = () => {
   let productsArr = [];
-  for(let i = 0; i < 100; i++){
+  for(let i = 0; i < 101; i++){
     productsArr.push(createProduct())
   }
   return productsArr
 };
 
-const insertProducts = function() {
+let insertProducts = function() {
   let newProdsArr = createProducts();
 
   newProdsArr.map((product) => {
@@ -38,15 +38,8 @@ insertProducts();
 
 // ===============PRODUCT REVIEWS=============================
 
-var reviewer = faker.name.findName();
-var title = faker.lorem.sentence();
-var rating = (Math.random() * 5).toFixed(2);
-var content = faker.lorem.paragraph();
-var helpful = Math.floor(Math.random() * 10);
-var avatar = "https://static.reverb-assets.com/assets/avatars/default-12200bad002dac7468972d9abe4d189bb04815943e33f3d1ea7d8788266624b9.jpg"
-var product_id = Math.floor(Math.random() * 100);
 
-const createReviewProduct = () => {
+let createReviewProduct = () => {
   let review = {};
   review.reviewer = `${faker.name.findName()}`;
   review.title = `${faker.lorem.sentence()}`;
@@ -54,23 +47,23 @@ const createReviewProduct = () => {
   review.content = `${faker.lorem.paragraph()}`;
   review.helpful = `${Math.floor(Math.random() * 10)}`;
   review.avatar = `${"https://static.reverb-assets.com/assets/avatars/default-12200bad002dac7468972d9abe4d189bb04815943e33f3d1ea7d8788266624b9.jpg"}`;
-  review.product_id = `${Math.floor(Math.random() * 100)}`;
+  review.product_id = `${Math.floor(Math.random() * 100) + 1}`;
 
   return review
 };
 
-const createReviews = () => {
+let createReviews = () => {
   let reviewsArr = [];
-  for(let i = 0; i < 600; i++){
+  for(let i = 0; i < 1000; i++){
     reviewsArr.push(createReviewProduct());
   }
   return reviewsArr;
 };
 
-const insertReviews = function() {
-  let newRewviewsArr = createReviews();
+let insertReviews = function() {
+  let newReviewsArr = createReviews();
 
-  newRewviewsArr.map((review) => {
+  newReviewsArr.map((review) => {
     db.query(`INSERT INTO productReviews (reviewer, title, rating, content, helpful, avatar, product_id) VALUES ("${review.reviewer}", "${review.title}", ${review.rating}, "${review.content}", ${review.helpful}, "${review.avatar}", ${review.product_id})`)
   })
 
@@ -79,41 +72,35 @@ const insertReviews = function() {
 insertReviews();
 
 
-
-
 //====================SELLER REVIEWS ============================
 
-var rating = (Math.random() * 5).toFixed(2);
-var sellDate = faker.date.between('2010-01-01', '2020-01-05').toString();
-var content = faker.lorem.sentence();
-var product_id = Math.floor(Math.random() * 100);
-var reviewer = faker.name.findName();
 
+let createSellerReview = () => {
 
-const createSellerReview = () => {
-  var review = {};
+  let sellReview = {};
 
-  review.rating = `${(Math.random() * 5).toFixed(2)}`;
-  review.content = `${faker.lorem.paragraph()}`;
-  review.product_id = `${Math.floor(Math.random() * 100)}`;
-  review.reviewer = `${faker.name.findName()}`;
+  sellReview.item = `${brand[Math.floor(Math.random() * Math.floor(brand.length))]} ${model[Math.floor(Math.random(model.length) * Math.floor(4))]} ${spec[Math.floor(Math.random() * Math.floor(spec.length))]}`;
+  sellReview.rating = `${(Math.random() * 5).toFixed(2)}`;
+  sellReview.content = `${faker.lorem.sentences(sentence_count = 2)}`;
+  sellReview.product_id = `${Math.floor(Math.random() * 100) + 1}`;
+  sellReview.reviewer = `${faker.name.findName()}`;
 
-  return review
+  return sellReview
 };
 
-const createSellerReviews = () => {
+let createSellerReviews = () => {
   let sellerReviewsArr = [];
-  for(let i = 0; i < 100; i++){
-    sellerReviewsArr.push(createReviewProduct());
+  for(let i = 0; i < 1000; i++){
+    sellerReviewsArr.push(createSellerReview());
   }
   return sellerReviewsArr;
 };
 
-const insertSellerReviews = function() {
-  let newSellerRewviewsArr = createSellerReviews();
+let insertSellerReviews = function() {
+  let newSellerReviewsArr = createSellerReviews();
 
-  newSellerRewviewsArr.map((review) => {
-    db.query(`INSERT INTO sellerReviews (rating, content, product_id, reviewer) VALUES (${review.rating}, "${review.content}", ${review.product_id}, "${review.reviewer}")`)
+  newSellerReviewsArr.map((sellReview) => {
+    db.query(`INSERT INTO sellerReviews (item, rating, content, product_id, reviewer) VALUES ("${sellReview.item}", ${sellReview.rating}, "${sellReview.content}", ${sellReview.product_id}, "${sellReview.reviewer}")`)
   })
 
 };

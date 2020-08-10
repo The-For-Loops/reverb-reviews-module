@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import faker from 'faker';
 import SellerReviewEntry from './SellerReviewEntry.jsx';
+import StarRatingComponent from 'react-star-rating-component';
 
 class SellerReviews extends React.Component {
   constructor(props) {
@@ -33,7 +34,8 @@ class SellerReviews extends React.Component {
   displayReviews() {
     if (this.state.dropClicked)
       return (
-        <div>{<SellerReviewEntry reviews={this.state.reviews}/>}</div>
+        <div>{<SellerReviewEntry reviews={this.state.reviews}/>}
+        <button>View all reviews</button></div>
       )
   }
 
@@ -44,6 +46,9 @@ class SellerReviews extends React.Component {
         reviews: results.data
       }, () => console.log(this.state.reviews))
     })
+    .catch((err) => {
+      console.error(err)
+    })
   }
 
 
@@ -52,10 +57,13 @@ class SellerReviews extends React.Component {
     return (
       <div className={!this.state.dropClicked ? "seller-container-collapsed" : "seller-container-toggled"} onClick={this.toggleDrop}>
         <div>
-          <h3>Seller Reviews ***** (18,738)</h3><br></br>
+          <h3>Seller Reviews <StarRatingComponent
+                name="rate1"
+                starCount={5}
+                value={5}
+              /> (18,738)</h3><br></br>
           <div>{this.displayReviews()}</div>
           </div>
-
       </div>
     )
   }

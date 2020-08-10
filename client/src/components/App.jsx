@@ -24,8 +24,9 @@ class App extends React.Component {
 
     return (
       <div>
-        {<ProductReviews />}<br></br>
         {<SellerReviews />}
+        <br></br>
+        {<ProductReviews />}<br></br>
       </div>
     )
   }

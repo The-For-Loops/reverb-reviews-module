@@ -2,8 +2,7 @@ import React from 'react';
 import faker from 'faker';
 import StarRatingComponent from 'react-star-rating-component';
 
-
-class SellerReviewEntry extends React.Component {
+class ProductReviewEntry extends React.Component {
   constructor(props) {
     super(props);
 
@@ -20,13 +19,14 @@ class SellerReviewEntry extends React.Component {
         <div className="seller-individual">
           <li>
             <div>
+              {faker.name.firstName()} {} {faker.name.lastName()[0]}.
               <StarRatingComponent
                 name="rate1"
                 starCount={5}
                 value={review.rating}
-              /></div>
-            {review.item}<br></br>
-            {review.reviewer} - {faker.date.between('2015-01-01', '2015-01-05').toString()} <br></br>
+              />Verified Purchase</div>
+            {review.title}<span>{review.reviewer}</span>
+
             {review.content}
           </li>
         </div>
@@ -41,5 +41,4 @@ class SellerReviewEntry extends React.Component {
   }
 }
 
-
-export default SellerReviewEntry;
+export default ProductReviewEntry;
