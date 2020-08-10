@@ -25,7 +25,7 @@ class SellerReviewEntry extends React.Component {
                 starCount={5}
                 value={review.rating}
               /></div>
-            {review.item}<br></br>
+            <a href="">{review.item}</a><br></br>
             {review.reviewer} - {faker.date.between('2015-01-01', '2015-01-05').toString()} <br></br>
             {review.content}
           </li>

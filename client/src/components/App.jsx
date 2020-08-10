@@ -2,14 +2,33 @@ import React from 'react';
 import faker from 'faker';
 import ProductReviews from './ProductReviews.jsx';
 import SellerReviews from './SellerReviews.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-
+      products: []
     }
+
+    this.getProducts = this.getProducts.bind(this);
+  }
+
+  componentDidMount() {
+    this.getProducts();
+  }
+
+  getProducts() {
+    axios.get(`/api/allProducts/`)
+    .then((results) => {
+      this.setState({
+        products: results.data
+      })
+    })
+    .catch((err) => {
+      console.error(err)
+    })
   }
 
   render() {
@@ -26,7 +45,7 @@ class App extends React.Component {
       <div>
         {<SellerReviews />}
         <br></br>
-        {<ProductReviews />}<br></br>
+        {<ProductReviews products={this.state.products}/>}<br></br>
       </div>
     )
   }

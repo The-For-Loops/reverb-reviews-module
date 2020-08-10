@@ -44,7 +44,7 @@ class SellerReviews extends React.Component {
     .then((results) => {
       this.setState({
         reviews: results.data
-      }, () => console.log(this.state.reviews))
+      })
     })
     .catch((err) => {
       console.error(err)
