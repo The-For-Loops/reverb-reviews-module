@@ -3,6 +3,8 @@ import faker from 'faker';
 import axios from 'axios';
 import ProductReviewEntry from './ProductReviewEntry.jsx';
 import StarRatingComponent from 'react-star-rating-component';
+import ModalLogin from './Modal.jsx';
+
 
 
 class ProductReviews extends React.Component {
@@ -22,6 +24,8 @@ class ProductReviews extends React.Component {
 
   }
 
+
+
   componentDidMount() {
     this.getProducts();
     this.getReviews();
@@ -37,7 +41,7 @@ class ProductReviews extends React.Component {
     if (this.state.dropClicked)
       return (
         <div>
-          Help another musician by sharing your experience! <button>Write a Product Review</button>
+          <ModalLogin />
           <div>{<ProductReviewEntry products={this.state.products} reviews={this.state.reviews} />}</div>
         </div >
       )
@@ -74,8 +78,8 @@ class ProductReviews extends React.Component {
       return (
         <div>
           <div className={!this.state.dropClicked ? "seller-container-collapsed" : "seller-container-toggled"}>
-            <div>
-            <span><h3>Reviews of the {this.state.products[Math.floor(Math.random() * this.state.products.length)].item}
+            <div onClick={this.toggleDrop}>
+            <span><h3>Reviews of the {this.state.products[0].item}
                 <StarRatingComponent
                   name="rate1"
                   starCount={5}
@@ -88,7 +92,7 @@ class ProductReviews extends React.Component {
         </div>
       )
     }}
-      return ('loading...')
+      return ('')
 
 
   }
