@@ -1,6 +1,7 @@
 import React from 'react';
 import faker from 'faker';
 import StarRatingComponent from 'react-star-rating-component';
+import ReadMoreReact from 'read-more-react';
 
 class ProductReviewEntry extends React.Component {
   constructor(props) {
@@ -30,13 +31,15 @@ class ProductReviewEntry extends React.Component {
                   name="rate1"
                   starCount={5}
                   value={review.rating}
+                  emptyStarColor={"grey"}
                 // emptyStarColor="#ffb400"
-                /><span style={{ color: '#f6870f' }}>Verified Purchase</span>
+                /><span style={{ color: '#f6870f', fontWeight: 'bold' }}>Verified Purchase</span>
 
             </div>
             {review.title}
+            <p></p>
 
-            {review.content}
+            <span><ReadMoreReact text={review.content} /></span>
             <br></br>
             {review.helpful} people found this helpful
           </li>

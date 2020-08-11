@@ -70,23 +70,27 @@ class ProductReviews extends React.Component {
 
 
   render() {
-
-
-
-    return (
-      <div className={!this.state.dropClicked ? "seller-container-collapsed" : "seller-container-toggled"} onClick={this.toggleDrop}>
+    {if (this.state.products.length) {
+      return (
         <div>
-          <h3>Reviews of the Fender Player Telecaster {} {}
- <StarRatingComponent
-              name="rate1"
-              starCount={5}
-              value={5}
-            /> (62)</h3><br></br>
-          <div>{this.displayReviews()}</div>
+          <div className={!this.state.dropClicked ? "seller-container-collapsed" : "seller-container-toggled"}>
+            <div>
+            <span><h3>Reviews of the {this.state.products[Math.floor(Math.random() * this.state.products.length)].item}
+                <StarRatingComponent
+                  name="rate1"
+                  starCount={5}
+                  value={5}
+                  emptyStarColor={"#eee"}
+                /> (62)</h3></span><br></br>
+            </div>
+              {this.displayReviews()}
+          </div>
         </div>
+      )
+    }}
+      return ('loading...')
 
-      </div>
-    )
+
   }
 }
 
