@@ -44,7 +44,7 @@ class App extends React.Component {
     return (
       <div>
         {<SellerReviews />}
-        <br></br>
+        <p></p>
         {<ProductReviews products={this.state.products}/>}<br></br>
       </div>
     )
