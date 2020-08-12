@@ -18,17 +18,18 @@ class SellerReviewEntry extends React.Component {
     let reviewMap = this.props.reviews.map((review) => (
       <div key={review.id}>
         <div className="seller-review-individual">
-          <li>
+          {/* <li> */}
             <div>
               <StarRatingComponent
                 name="rate1"
                 starCount={5}
                 value={review.rating}
               /></div>
-            <a href="">{review.item}</a><br></br>
-            {review.reviewer} - {faker.date.between('2015-01-01', '2015-01-05').toString()} <br></br>
+            <a className="seller-review-item">{review.item}</a>
+            {review.reviewer} - {faker.date.between('2015-01-01', '2015-01-05').toString()}
+            <p></p>
             {review.content}
-          </li>
+          {/* </li> */}
         </div>
       </div>
     ))
