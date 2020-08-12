@@ -41,9 +41,12 @@ class ProductReviews extends React.Component {
     if (this.state.dropClicked)
       return (
         <div>
-          <ModalLogin />
-          <div>{<ProductReviewEntry products={this.state.products} reviews={this.state.reviews} />}</div>
-        </div >
+          <div>
+            <ModalLogin />
+          </div>
+          <div className="seller-individual">{<ProductReviewEntry products={this.state.products} reviews={this.state.reviews} />}
+          </div >
+        </div>
       )
   }
 

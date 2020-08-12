@@ -55,15 +55,15 @@ class SellerReviews extends React.Component {
   render() {
 
     return (
-      <div className={!this.state.dropClicked ? "seller-container-collapsed" : "seller-container-toggled"} onClick={this.toggleDrop}>
-        <div>
+      <div>
+        <div onClick={this.toggleDrop} className="seller-review-container" >
           <h3>Seller Reviews <StarRatingComponent
                 name="rate1"
                 starCount={5}
                 value={5}
               /> (18,738)</h3><br></br>
-          <div>{this.displayReviews()}</div>
           </div>
+          <div>{this.displayReviews()}</div>
       </div>
     )
   }

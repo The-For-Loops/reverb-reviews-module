@@ -1,7 +1,8 @@
 import React from 'react';
 import faker from 'faker';
 import StarRatingComponent from 'react-star-rating-component';
-import ReadMoreReact from 'read-more-react';
+// import ReadMoreReact from 'read-more-react';
+import ShowMore from "react-simple-show-more";
 
 class ProductReviewEntry extends React.Component {
   constructor(props) {
@@ -20,10 +21,8 @@ class ProductReviewEntry extends React.Component {
     }
 
     let reviewMap = this.props.reviews.map((review) => (
-      <div key={review.id}>
-        <div className="seller-individual">
-          <li>
-            <div className="avatar-container"><img src={review.avatar} className="avatar-container"/></div>
+      <div key={review.id} className="seller-individual">
+            <img src={review.avatar} className="avatar-container"/>
             <div>
               {faker.name.firstName()} {} {faker.name.lastName()[0]}.
 
@@ -39,11 +38,25 @@ class ProductReviewEntry extends React.Component {
             {review.title}
             <p></p>
 
-            <span><ReadMoreReact text={review.content} /></span>
+            <span>
+              <ShowMore
+                text={review.content}
+                length={170}
+                showMoreLabel=" read more"
+                showLessLabel=" collapse"
+                tag="a"
+                className="text-blue"
+                ellipsis="..."
+                style={{
+                  cursor: 'pointer',
+                  color: 'blue',
+                }}
+                enabled
+              />
+              </span>
             <br></br>
             {review.helpful} people found this helpful
-          </li>
-        </div>
+
       </div>
     ))
 

@@ -42,10 +42,14 @@ class App extends React.Component {
 
 
     return (
-      <div>
-        {<SellerReviews />}
-        <p></p>
-        {<ProductReviews products={this.state.products}/>}<br></br>
+      <div className="review-main-container">
+        <div className="review-main-content">
+          {<SellerReviews />}
+          {/* <p></p>
+          {<ProductReviews products={this.state.products} />}<br></br> */}
+        </div>
+        <div className="review-sidebar">
+        </div>
       </div>
     )
   }

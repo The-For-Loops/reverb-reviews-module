@@ -17,7 +17,7 @@ class SellerReviewEntry extends React.Component {
 
     let reviewMap = this.props.reviews.map((review) => (
       <div key={review.id}>
-        <div className="seller-individual">
+        <div className="seller-review-individual">
           <li>
             <div>
               <StarRatingComponent
