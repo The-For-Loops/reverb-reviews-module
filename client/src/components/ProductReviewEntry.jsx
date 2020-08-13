@@ -13,14 +13,17 @@ class ProductReviewEntry extends React.Component {
     }
   }
 
-
   render() {
+
+    let helpfulText = "found this helpful"
 
     let reviewMap = this.props.reviews.map((review) => (
       <div key={review.id} className="product-review-individual">
 
         <div className="product-user">
-          <img src={review.avatar} className="avatar-container" />
+          <div style={{ width: '100px', textAlign: 'center', justifyContent: 'center', margin: '0 auto' }}>
+            <img src={review.avatar} className="avatar-container" />
+          </div>
           <div style={{ fontWeight: 'bold' }}>{faker.name.firstName()} {} {faker.name.lastName()[0]}.</div>
         </div>
 
@@ -37,7 +40,7 @@ class ProductReviewEntry extends React.Component {
           /> {} {} {}
           <span style={{ color: '#f6870f', fontWeight: 'bold' }}>Verified Purchase</span>
           <p>
-          {/* <span> */}
+            {/* <span> */}
             <ShowMore
               text={review.content}
               length={170}
@@ -52,12 +55,14 @@ class ProductReviewEntry extends React.Component {
               }}
               enabled
             />
-            </p>
+          </p>
           {/* </span> */}
-          <br></br>
-          <p></p>
-          {review.helpful} people found this helpful
+          {/* <br></br>
+          <p></p> */}
+          <div className="helpful-text">
+            {review.helpful} {helpfulText}
           </div>
+        </div>
       </div>
 
 
@@ -66,10 +71,9 @@ class ProductReviewEntry extends React.Component {
     return (
       <div>
         <div>
-        <ul>
-          {reviewMap}
-        </ul>
-        <p></p>
+          <ul>
+            {reviewMap}
+          </ul>
         </div>
         <div className="page-numbers-container">
           <ul>
@@ -95,7 +99,7 @@ class ProductReviewEntry extends React.Component {
             </li>
             <li className="page-number">
               <a className="page-number-after">
-                Next
+                Next >
               </a>
             </li>
           </ul>

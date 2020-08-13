@@ -27,15 +27,17 @@ class SellerReviewEntry extends React.Component {
             emptyStarColor={"#FFF0DA"}
           />
           <a className="seller-review-item">{review.item}</a>
-          {review.reviewer} - {faker.date.month().toString()} {}
-          {faker.random.number({
-            'min': 1,
-            'max': 28
-          }).toString()}, {}
-           {faker.random.number({
-            'min': 2010,
-            'max': 2020
-          }).toString()}
+          <div className="seller-reviewer-name-date">
+            {review.reviewer} - {faker.date.month().toString()} {}
+            {faker.random.number({
+              'min': 1,
+              'max': 28
+            }).toString()}, {}
+            {faker.random.number({
+              'min': 2010,
+              'max': 2020
+            }).toString()}
+          </div>
         </div>
         <br></br>
         {review.content}
