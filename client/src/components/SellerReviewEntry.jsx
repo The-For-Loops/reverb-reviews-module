@@ -24,6 +24,7 @@ class SellerReviewEntry extends React.Component {
             name="rate1"
             starCount={5}
             value={review.rating}
+            emptyStarColor={"#FFF0DA"}
           />
           <a className="seller-review-item">{review.item}</a>
           {review.reviewer} - {faker.date.between('2015-01-01', '2015-01-05').toString()}

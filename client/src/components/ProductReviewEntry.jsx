@@ -32,12 +32,12 @@ class ProductReviewEntry extends React.Component {
             name="rate1"
             starCount={5}
             value={review.rating}
-            emptyStarColor={"grey"}
+            emptyStarColor={"#FFF0DA"}
           // emptyStarColor="#ffb400"
           /> {} {} {}
           <span style={{ color: '#f6870f', fontWeight: 'bold' }}>Verified Purchase</span>
-          <p></p>
-          <span>
+          <p>
+          {/* <span> */}
             <ShowMore
               text={review.content}
               length={170}
@@ -52,7 +52,8 @@ class ProductReviewEntry extends React.Component {
               }}
               enabled
             />
-          </span>
+            </p>
+          {/* </span> */}
           <br></br>
           <p></p>
           {review.helpful} people found this helpful
