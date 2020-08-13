@@ -77,24 +77,32 @@ class ProductReviews extends React.Component {
 
 
   render() {
-    {if (this.state.products.length) {
-      return (
-        <div>
-            <div onClick={this.toggleDrop} className="seller-review-container">
-            <span><h3>Reviews of the {this.state.products[0].item}
-                <StarRatingComponent
-                  name="rate1"
-                  starCount={5}
-                  value={5}
-                  emptyStarColor={"#eee"}
-                /> (62)</h3></span><br></br>
+    {
+      if (this.state.products.length) {
+        return (
+          <div>
+            <div className={!this.state.dropClicked ? "review-container-collapsed" : "review-container-toggled"}>
+              <div className={!this.state.dropClicked ? "review-header" : "review-header-toggled"} onClick={this.toggleDrop}>
+
+                <span><h3>Reviews of the {this.state.products[0].item}
+                  <StarRatingComponent
+                    name="rate1"
+                    starCount={5}
+                    value={5}
+                    emptyStarColor={"#eee"}
+                  /> (62)</h3></span>
+
+
+              </div>
+              <br></br>
             </div>
-              {this.displayReviews()}
+            {this.displayReviews()}
           </div>
 
-      )
-    }}
-      return ('')
+        )
+      }
+    }
+    return ('')
 
 
   }
