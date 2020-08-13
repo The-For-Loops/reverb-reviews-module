@@ -64,8 +64,8 @@ class ModalLogin extends React.Component {
           startLoading={this.startLoading.bind(this)}
           finishLoading={this.finishLoading.bind(this)}
         />
-        <div>
-          Help another musician by sharing your experience! <button onClick={() => this.openModal()}>Write a Product Review</button>
+        <div className="write-review-text">
+          Help another musician by sharing your experience! <button className="button-write-review" onClick={() => this.openModal()}>Write a Product Review</button>
         </div>
       </div>
     )

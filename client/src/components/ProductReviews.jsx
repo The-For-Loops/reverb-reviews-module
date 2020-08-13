@@ -80,8 +80,7 @@ class ProductReviews extends React.Component {
     {if (this.state.products.length) {
       return (
         <div>
-          <div className={!this.state.dropClicked ? "seller-container-collapsed" : "seller-container-toggled"}>
-            <div onClick={this.toggleDrop}>
+            <div onClick={this.toggleDrop} className="seller-review-container">
             <span><h3>Reviews of the {this.state.products[0].item}
                 <StarRatingComponent
                   name="rate1"
@@ -92,7 +91,7 @@ class ProductReviews extends React.Component {
             </div>
               {this.displayReviews()}
           </div>
-        </div>
+
       )
     }}
       return ('')

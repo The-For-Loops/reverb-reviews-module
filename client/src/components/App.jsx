@@ -21,14 +21,14 @@ class App extends React.Component {
 
   getProducts() {
     axios.get(`/api/allProducts/`)
-    .then((results) => {
-      this.setState({
-        products: results.data
+      .then((results) => {
+        this.setState({
+          products: results.data
+        })
       })
-    })
-    .catch((err) => {
-      console.error(err)
-    })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   render() {
@@ -44,11 +44,9 @@ class App extends React.Component {
     return (
       <div className="review-main-container">
         <div className="review-main-content">
-
-            {<SellerReviews />}
-
-          {/* <p></p>
-          {<ProductReviews products={this.state.products} />}<br></br> */}
+          {<SellerReviews />}
+          <p></p>
+          {<ProductReviews products={this.state.products} />}<br></br>
         </div>
         <div className="review-sidebar">
         </div>
