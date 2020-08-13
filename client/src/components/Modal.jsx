@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactModalLogin from 'react-modal-login';
+import {facebookConfig, googleConfig} from "./social-config.js";
+
 
 class ModalLogin extends React.Component {
   constructor(props) {
@@ -64,23 +66,11 @@ class ModalLogin extends React.Component {
           startLoading={this.startLoading.bind(this)}
           finishLoading={this.finishLoading.bind(this)}
           form={{
-            // onLogin: this.onLogin.bind(this),
-            // onRegister: this.onRegister.bind(this),
-            // onRecoverPassword: this.onRecoverPassword.bind(this),
-
-            // recoverPasswordSuccessLabel: this.state.recoverPasswordSuccess
-            //   ? {
-            //     label: "New password has been sent to your mailbox!"
-            //   }
-            //   : null,
-            // recoverPasswordAnchor: {
-            //   label: "Forgot your password?"
-            // },
             loginBtn: {
-              label: "Sign in"
+              label: "Log In"
             },
             registerBtn: {
-              label: "Sign up"
+              label: "Sign Up"
             },
             recoverPasswordBtn: {
               label: "Send new password"
@@ -93,7 +83,7 @@ class ModalLogin extends React.Component {
                 inputClass: 'RML-form-control',
                 id: 'email',
                 name: 'email',
-                placeholder: 'Email',
+                placeholder: '',
               },
               {
                 containerClass: 'RML-form-group',
@@ -102,18 +92,27 @@ class ModalLogin extends React.Component {
                 inputClass: 'RML-form-control',
                 id: 'password',
                 name: 'password',
-                placeholder: 'Password',
+                placeholder: '',
               }
             ],
             registerInputs: [
               {
                 containerClass: 'RML-form-group',
-                label: 'Nickname',
+                label: 'First name',
                 type: 'text',
                 inputClass: 'RML-form-control',
                 id: 'login',
                 name: 'login',
-                placeholder: 'Nickname',
+                placeholder: '',
+              },
+              {
+                containerClass: 'RML-form-group',
+                label: 'Last name',
+                type: 'text',
+                inputClass: 'RML-form-control',
+                id: 'login',
+                name: 'login',
+                placeholder: '',
               },
               {
                 containerClass: 'RML-form-group',
@@ -122,7 +121,16 @@ class ModalLogin extends React.Component {
                 inputClass: 'RML-form-control',
                 id: 'email',
                 name: 'email',
-                placeholder: 'Email',
+                placeholder: '',
+              },
+              {
+                containerClass: 'RML-form-group',
+                label: 'Email Confirmation',
+                type: 'email',
+                inputClass: 'RML-form-control',
+                id: 'email',
+                name: 'email',
+                placeholder: '',
               },
               {
                 containerClass: 'RML-form-group',
@@ -131,7 +139,7 @@ class ModalLogin extends React.Component {
                 inputClass: 'RML-form-control',
                 id: 'password',
                 name: 'password',
-                placeholder: 'Password',
+                placeholder: '',
               }
             ],
             recoverPasswordInputs: [
@@ -142,9 +150,22 @@ class ModalLogin extends React.Component {
                 inputClass: 'RML-form-control',
                 id: 'email',
                 name: 'email',
-                placeholder: 'Email',
+                placeholder: '',
               },
             ],
+          }}
+          separator={{
+            label: "or"
+          }}
+          providers={{
+            facebook: {
+              config: facebookConfig,
+              label: "Continue with Facebook"
+            },
+            google: {
+              config: googleConfig,
+              label: "Continue with Google"
+            }
           }}
         />
         <div className="write-review-text">
