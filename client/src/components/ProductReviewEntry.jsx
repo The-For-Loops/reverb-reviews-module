@@ -17,7 +17,7 @@ class ProductReviewEntry extends React.Component {
   render() {
 
     let reviewMap = this.props.reviews.map((review) => (
-      <div key={review.id} className="seller-review-individual">
+      <div key={review.id} className="product-review-individual">
 
         <div className="product-user">
           <img src={review.avatar} className="avatar-container" />
