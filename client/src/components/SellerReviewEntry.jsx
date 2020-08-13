@@ -36,7 +36,7 @@ class SellerReviewEntry extends React.Component {
     ))
 
     return (
-      <div className="review-seller-individual">
+      <div>
         {reviewMap}
       </div>
     )
