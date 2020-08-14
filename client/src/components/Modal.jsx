@@ -5,13 +5,25 @@ class Modal extends React.Component {
 
   constructor(props) {
     super(props)
+
+    this.state = {
+      isChecked: true
+    }
+    this.toggleCheck = this.toggleCheck.bind(this);
   }
+
+  toggleCheck(e) {
+    this.setState({
+      isChecked: !this.state.isChecked
+    })
+  }
+
+
 
   render() {
     return (
       <div id="myModal" className={this.props.showModal ? 'openedModal' : 'closedModal'}>
 
-        {/*<!-- Modal content -->*/}
         <div className="modal-content">
           <span className="close" onClick={this.props.toggleModal}>&times;</span>
 
@@ -19,7 +31,7 @@ class Modal extends React.Component {
             <span>Sign Up</span> {}
             <span>Log In</span>
           </div>
-          <div>
+          <div style={{ fontSize: '90%' }}>
             <span>Please log in or create a free account to write a product review</span>
           </div>
           <form>
@@ -37,35 +49,41 @@ class Modal extends React.Component {
             </div>
             <div>
 
-            <label>
-              Email
+              <label>
+                Email
             <input type="text" name="name" />
-            </label>
+              </label>
             </div>
             <div>
 
-            <label>
-              Email Confirmation
+              <label>
+                Email Confirmation
             <input type="text" name="name" />
-            </label>
+              </label>
             </div>
             <div>
-            <label>
-              Password
+              <label>
+                Password
             <input type="text" name="name" />
-            </label>
+              </label>
             </div>
             <div>
 
-            <input type="submit" value="Sign Up" />
+              <input type="submit" value="Sign Up" />
             </div>
 
-            <p>
-              <input type="checkbox" checked="true" /> Get the latest news, deals, and promotions via email
+            <div>
+              <p>
+                <input type="checkbox" checked={this.state.isChecked} onChange={(e) => this.toggleCheck(e)} /> Get the latest news, deals, and promotions via email
             </p>
-            <p>
-              <input type="checkbox" checked="true" />By clicking Sign Up, I expressly agree to accept Reverb’s Terms of Use and Privacy Policy - REQUIRED
+            </div>
+            <div>
+
+              <p>
+                <input type="checkbox" checked={this.state.isChecked} onChange={(e) => this.toggleCheck(e)} />By clicking Sign Up, I expressly agree to accept Reverb’s Terms of Use and Privacy Policy - REQUIRED
             </p>
+            </div>
+
 
           </form>
 
