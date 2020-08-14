@@ -1,7 +1,6 @@
 import React from 'react';
 import faker from 'faker';
 import StarRatingComponent from 'react-star-rating-component';
-// import ReadMoreReact from 'read-more-react';
 import ShowMore from "react-simple-show-more";
 
 class ProductReviewEntry extends React.Component {
@@ -9,8 +8,8 @@ class ProductReviewEntry extends React.Component {
     super(props);
 
     this.state = {
-
     }
+
     this.checksHelpful = this.checksHelpful.bind(this);
   }
   checksHelpful(number) {
@@ -22,8 +21,6 @@ class ProductReviewEntry extends React.Component {
   }
 
   render() {
-
-    let helpfulText = "found this helpful"
 
     let reviewMap = this.props.reviews.map((review) => (
       <div key={review.id} className="product-review-individual">

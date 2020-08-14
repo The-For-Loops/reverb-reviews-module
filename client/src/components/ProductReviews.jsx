@@ -3,7 +3,7 @@ import faker from 'faker';
 import axios from 'axios';
 import ProductReviewEntry from './ProductReviewEntry.jsx';
 import StarRatingComponent from 'react-star-rating-component';
-import ModalLogin from './Modal.jsx';
+import Modal from './Modal.jsx';
 
 
 
@@ -15,15 +15,23 @@ class ProductReviews extends React.Component {
       dropClicked: false,
       product_id: 10,
       reviews: [],
-      products: []
+      products: [],
+      showModal: false
     }
     this.toggleDrop = this.toggleDrop.bind(this);
     this.displayReviews = this.displayReviews.bind(this);
     this.getReviews = this.getReviews.bind(this);
     this.getProducts = this.getProducts.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
 
   }
 
+
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal
+    })
+  }
 
 
   componentDidMount() {
@@ -41,8 +49,9 @@ class ProductReviews extends React.Component {
     if (this.state.dropClicked)
       return (
         <div>
-          <div>
-            <ModalLogin />
+        <Modal showModal={this.state.showModal} toggleModal={this.toggleModal}/>
+          <div className="write-review-text">
+            <span>Help another musician by sharing your experience!</span><button className="button-write-review" onClick={this.toggleModal}>Write a Product Review</button>
           </div>
           <div className="seller-individual">{<ProductReviewEntry products={this.state.products} reviews={this.state.reviews} />}
           </div >
@@ -81,21 +90,21 @@ class ProductReviews extends React.Component {
       if (this.state.products.length) {
         return (
 
-            <div className={!this.state.dropClicked ? "review-container-collapsed" : "review-container-toggled"}>
-              <div className={!this.state.dropClicked ? "review-header" : "review-header-toggled"} onClick={this.toggleDrop}>
+          <div className={!this.state.dropClicked ? "review-container-collapsed" : "review-container-toggled"}>
+            <div className={!this.state.dropClicked ? "review-header" : "review-header-toggled"} onClick={this.toggleDrop}>
 
-                <span><h3>Reviews of the {this.state.products[this.state.product_id].item}
-                  <StarRatingComponent
-                    name="rate1"
-                    starCount={5}
-                    value={5}
-                    emptyStarColor={"#eee"}
-        /> ({this.state.reviews.length})</h3></span>
+              <span><h3>Reviews of the {this.state.products[this.state.product_id].item}
+                <StarRatingComponent
+                  name="rate1"
+                  starCount={5}
+                  value={5}
+                  emptyStarColor={"#eee"}
+                /> ({this.state.reviews.length})</h3></span>
 
 
-              </div>
-              {this.displayReviews()}
             </div>
+            {this.displayReviews()}
+          </div>
 
 
         )

@@ -1,180 +1,82 @@
 import React from 'react';
-import ReactModalLogin from 'react-modal-login';
-import {facebookConfig, googleConfig} from "./social-config.js";
 
 
-class ModalLogin extends React.Component {
+class Modal extends React.Component {
+
   constructor(props) {
-    super(props);
-
-    this.state = {
-      showModal: false,
-      loading: false,
-      error: null
-    }
-  }
-
-
-  openModal() {
-    this.setState({
-      showModal: true,
-    });
-  }
-
-  closeModal() {
-    this.setState({
-      showModal: false,
-      error: null
-    });
-  }
-
-  startLoading() {
-    this.setState({
-      loading: true
-    })
-  }
-
-  finishLoading() {
-    this.setState({
-      loading: false
-    })
-  }
-
-  onTabsChange() {
-    this.setState({
-      error: null
-    });
+    super(props)
   }
 
   render() {
     return (
-      <div>
-        <ReactModalLogin
-          visible={this.state.showModal}
-          onCloseModal={this.closeModal.bind(this)}
-          loading={this.state.loading}
-          error={this.state.error}
-          tabs={{
-            onChange: this.onTabsChange.bind(this)
-          }}
-          loginError={{
-            label: "Couldn't sign in, please try again."
-          }}
-          registerError={{
-            label: "Couldn't sign up, please try again."
-          }}
-          startLoading={this.startLoading.bind(this)}
-          finishLoading={this.finishLoading.bind(this)}
-          form={{
-            loginBtn: {
-              label: "Log In"
-            },
-            registerBtn: {
-              label: "Sign Up"
-            },
-            recoverPasswordBtn: {
-              label: "Send new password"
-            },
-            loginInputs: [
-              {
-                containerClass: 'RML-form-group',
-                label: 'Email',
-                type: 'email',
-                inputClass: 'RML-form-control',
-                id: 'email',
-                name: 'email',
-                placeholder: '',
-              },
-              {
-                containerClass: 'RML-form-group',
-                label: 'Password',
-                type: 'password',
-                inputClass: 'RML-form-control',
-                id: 'password',
-                name: 'password',
-                placeholder: '',
-              }
-            ],
-            registerInputs: [
-              {
-                containerClass: 'RML-form-group',
-                label: 'First name',
-                type: 'text',
-                inputClass: 'RML-form-control',
-                id: 'login',
-                name: 'login',
-                placeholder: '',
-              },
-              {
-                containerClass: 'RML-form-group',
-                label: 'Last name',
-                type: 'text',
-                inputClass: 'RML-form-control',
-                id: 'login',
-                name: 'login',
-                placeholder: '',
-              },
-              {
-                containerClass: 'RML-form-group',
-                label: 'Email',
-                type: 'email',
-                inputClass: 'RML-form-control',
-                id: 'email',
-                name: 'email',
-                placeholder: '',
-              },
-              {
-                containerClass: 'RML-form-group',
-                label: 'Email Confirmation',
-                type: 'email',
-                inputClass: 'RML-form-control',
-                id: 'email',
-                name: 'email',
-                placeholder: '',
-              },
-              {
-                containerClass: 'RML-form-group',
-                label: 'Password',
-                type: 'password',
-                inputClass: 'RML-form-control',
-                id: 'password',
-                name: 'password',
-                placeholder: '',
-              }
-            ],
-            recoverPasswordInputs: [
-              {
-                containerClass: 'RML-form-group',
-                label: 'Email',
-                type: 'email',
-                inputClass: 'RML-form-control',
-                id: 'email',
-                name: 'email',
-                placeholder: '',
-              },
-            ],
-          }}
-          separator={{
-            label: "or"
-          }}
-          providers={{
-            facebook: {
-              config: facebookConfig,
-              label: "Continue with Facebook"
-            },
-            google: {
-              config: googleConfig,
-              label: "Continue with Google"
-            }
-          }}
-        />
-        <div className="write-review-text">
-          <span>Help another musician by sharing your experience!</span><button className="button-write-review" onClick={() => this.openModal()}>Write a Product Review</button>
+      <div id="myModal" className={this.props.showModal ? 'openedModal' : 'closedModal'}>
+
+        {/*<!-- Modal content -->*/}
+        <div className="modal-content">
+          <span className="close" onClick={this.props.toggleModal}>&times;</span>
+
+          <div>
+            <span>Sign Up</span> {}
+            <span>Log In</span>
+          </div>
+          <div>
+            <span>Please log in or create a free account to write a product review</span>
+          </div>
+          <form>
+            <div>
+              <label>
+                First name
+            <input type="text" name="name" />
+              </label>
+            </div>
+            <div>
+              <label>
+                Last name
+            <input type="text" name="name" />
+              </label>
+            </div>
+            <div>
+
+            <label>
+              Email
+            <input type="text" name="name" />
+            </label>
+            </div>
+            <div>
+
+            <label>
+              Email Confirmation
+            <input type="text" name="name" />
+            </label>
+            </div>
+            <div>
+            <label>
+              Password
+            <input type="text" name="name" />
+            </label>
+            </div>
+            <div>
+
+            <input type="submit" value="Sign Up" />
+            </div>
+
+            <p>
+              <input type="checkbox" checked="true" /> Get the latest news, deals, and promotions via email
+            </p>
+            <p>
+              <input type="checkbox" checked="true" />By clicking Sign Up, I expressly agree to accept Reverb’s Terms of Use and Privacy Policy - REQUIRED
+            </p>
+
+          </form>
+
         </div>
+
       </div>
     )
   }
 }
 
-export default ModalLogin;
+export default Modal;
+
+
 
