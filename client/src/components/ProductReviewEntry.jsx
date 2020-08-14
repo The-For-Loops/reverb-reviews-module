@@ -8,10 +8,14 @@ class ProductReviewEntry extends React.Component {
     super(props);
 
     this.state = {
+      pageNum: 2
     }
 
     this.checksHelpful = this.checksHelpful.bind(this);
+    this.pageNumSlicer = this.pageNumSlicer.bind(this);
+    this.nextPage = this.nextPage.bind(this);
   }
+
   checksHelpful(number) {
     if (number === 1) {
       return "person"
@@ -20,9 +24,25 @@ class ProductReviewEntry extends React.Component {
     }
   }
 
+  pageNumSlicer(array) {
+    let n = this.state.pageNum;
+    let min = (n-1)*5;
+    let max = min + 5
+
+    return array.slice(min, max)
+  }
+
+  nextPage() {
+    this.setState({
+      pageNum: this.state.pageNum + 1
+    }, () => console.log(this.state.pageNum))
+  }
+
+
+
   render() {
 
-    let reviewMap = this.props.reviews.map((review) => (
+    let reviewMap = this.pageNumSlicer(this.props.reviews).map((review) => (
       <div key={review.id} className="product-review-individual">
 
         <div className="product-user">
@@ -98,7 +118,7 @@ class ProductReviewEntry extends React.Component {
               </a>
             </li>
             <li className="page-number">
-              <a className="page-number-after">
+              <a className="page-number-after" onClick={this.nextPage}>
                 Next >
               </a>
             </li>
