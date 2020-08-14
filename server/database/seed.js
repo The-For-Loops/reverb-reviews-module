@@ -38,10 +38,11 @@ insertProducts();
 
 // ===============PRODUCT REVIEWS=============================
 
+// {faker.name.firstName()} {faker.name.lastName()[0].}
 
 let createReviewProduct = () => {
   let review = {};
-  review.reviewer = `${faker.name.findName()}`;
+  review.reviewer = `${faker.name.firstName()}` + " " + `${faker.name.lastName()[0] + "."}`
   review.title = `${faker.lorem.sentence()}`;
   review.rating = `${(Math.random() * 5).toFixed(2)}`;
   review.content = `${faker.lorem.paragraph()}`;

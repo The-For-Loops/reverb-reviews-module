@@ -11,6 +11,14 @@ class ProductReviewEntry extends React.Component {
     this.state = {
 
     }
+    this.checksHelpful = this.checksHelpful.bind(this);
+  }
+  checksHelpful(number) {
+    if (number === 1) {
+      return "person"
+    } else {
+      return "people"
+    }
   }
 
   render() {
@@ -24,7 +32,7 @@ class ProductReviewEntry extends React.Component {
           <div style={{ width: '100px', textAlign: 'center', justifyContent: 'center', margin: '0 auto' }}>
             <img src={review.avatar} className="avatar-container" />
           </div>
-          <div style={{ fontWeight: 'bold' }}>{faker.name.firstName()} {} {faker.name.lastName()[0]}.</div>
+          <div style={{ fontWeight: 'bold' }}>{review.reviewer}</div>
         </div>
 
         <div className="product-main">
@@ -56,16 +64,11 @@ class ProductReviewEntry extends React.Component {
               enabled
             />
           </p>
-          {/* </span> */}
-          {/* <br></br>
-          <p></p> */}
           <div className="helpful-text">
-            {review.helpful} {helpfulText}
+            {review.helpful + " " + this.checksHelpful(review.helpful) + " found this helpful"}
           </div>
         </div>
       </div>
-
-
     ))
 
     return (
