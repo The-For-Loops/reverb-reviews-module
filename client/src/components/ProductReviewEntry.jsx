@@ -8,12 +8,13 @@ class ProductReviewEntry extends React.Component {
     super(props);
 
     this.state = {
-      pageNum: 2
+      pageNum: 1
     }
 
     this.checksHelpful = this.checksHelpful.bind(this);
     this.pageNumSlicer = this.pageNumSlicer.bind(this);
     this.nextPage = this.nextPage.bind(this);
+    this.prevPage = this.prevPage.bind(this);
   }
 
   checksHelpful(number) {
@@ -26,7 +27,7 @@ class ProductReviewEntry extends React.Component {
 
   pageNumSlicer(array) {
     let n = this.state.pageNum;
-    let min = (n-1)*5;
+    let min = (n - 1) * 5;
     let max = min + 5
 
     return array.slice(min, max)
@@ -35,6 +36,12 @@ class ProductReviewEntry extends React.Component {
   nextPage() {
     this.setState({
       pageNum: this.state.pageNum + 1
+    }, () => console.log(this.state.pageNum))
+  }
+
+  prevPage() {
+    this.setState({
+      pageNum: this.state.pageNum - 1
     }, () => console.log(this.state.pageNum))
   }
 
@@ -98,6 +105,11 @@ class ProductReviewEntry extends React.Component {
         <div className="page-numbers-container">
           <ul>
             <li className="page-number">
+              <a className="page-number-after" onClick={this.prevPage}>
+                Previous
+              </a>
+            </li>
+            {/* <li className="page-number">
               <a className="page-number-selected">
                 1
               </a>
@@ -116,12 +128,13 @@ class ProductReviewEntry extends React.Component {
               <a className="page-number-after">
                 4
               </a>
-            </li>
+            </li> */}
             <li className="page-number">
               <a className="page-number-after" onClick={this.nextPage}>
-                Next >
+                Next
               </a>
             </li>
+
           </ul>
         </div>
 
