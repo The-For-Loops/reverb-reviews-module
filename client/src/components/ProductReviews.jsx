@@ -90,7 +90,7 @@ class ProductReviews extends React.Component {
                     starCount={5}
                     value={5}
                     emptyStarColor={"#eee"}
-                  /> (62)</h3></span>
+        /> ({this.state.reviews.length})</h3></span>
 
 
               </div>

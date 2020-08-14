@@ -16,7 +16,7 @@ module.exports = {
 
   getProductReviews: (req, callback) => {
     let { id } = req.params;
-    let queryStr = `SELECT * FROM productReviews WHERE productReviews.product_id = ${id} limit 5`;
+    let queryStr = `SELECT * FROM productReviews WHERE productReviews.product_id = ${id}`;
 
     db.query(queryStr, (err, results) => {
       if (err) {
@@ -29,7 +29,7 @@ module.exports = {
 
   getSellerReviews: (req, callback) => {
     let { id } = req.params;
-    let queryStr = `SELECT * FROM sellerReviews WHERE sellerReviews.product_id = ${id} limit 5`;
+    let queryStr = `SELECT * FROM sellerReviews WHERE sellerReviews.product_id = ${id}`;
 
     db.query(queryStr, (err, results) => {
       if (err) {

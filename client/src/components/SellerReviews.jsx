@@ -62,7 +62,7 @@ class SellerReviews extends React.Component {
                 name="rate1"
                 starCount={5}
                 value={5}
-              /> (18,738)</h3>
+              /> ({this.state.reviews.length})</h3>
           </div>
           {this.displayReviews()}
       </div>
