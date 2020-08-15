@@ -8,10 +8,15 @@ class ProductReviewEntry extends React.Component {
     super(props);
 
     this.state = {
+      pageNum: 1
     }
 
     this.checksHelpful = this.checksHelpful.bind(this);
+    this.pageNumSlicer = this.pageNumSlicer.bind(this);
+    this.nextPage = this.nextPage.bind(this);
+    this.prevPage = this.prevPage.bind(this);
   }
+
   checksHelpful(number) {
     if (number === 1) {
       return "person"
@@ -20,9 +25,31 @@ class ProductReviewEntry extends React.Component {
     }
   }
 
+  pageNumSlicer(array) {
+    let n = this.state.pageNum;
+    let min = (n - 1) * 5;
+    let max = min + 5
+
+    return array.slice(min, max)
+  }
+
+  nextPage() {
+    this.setState({
+      pageNum: this.state.pageNum + 1
+    })
+  }
+
+  prevPage() {
+    this.setState({
+      pageNum: this.state.pageNum - 1
+    })
+  }
+
+
+
   render() {
 
-    let reviewMap = this.props.reviews.map((review) => (
+    let reviewMap = this.pageNumSlicer(this.props.reviews).map((review) => (
       <div key={review.id} className="product-review-individual">
 
         <div className="product-user">
@@ -78,6 +105,11 @@ class ProductReviewEntry extends React.Component {
         <div className="page-numbers-container">
           <ul>
             <li className="page-number">
+              <a className="page-number-after" onClick={this.prevPage}>
+                Previous
+              </a>
+            </li>
+            {/* <li className="page-number">
               <a className="page-number-selected">
                 1
               </a>
@@ -96,15 +128,14 @@ class ProductReviewEntry extends React.Component {
               <a className="page-number-after">
                 4
               </a>
-            </li>
+            </li> */}
             <li className="page-number">
-              <a className="page-number-after">
-                Next >
+              <a className="page-number-after" onClick={this.nextPage}>
+                Next
               </a>
             </li>
           </ul>
         </div>
-
       </div>
     )
   }

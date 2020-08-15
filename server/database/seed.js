@@ -108,3 +108,5 @@ let insertSellerReviews = function() {
 
 insertSellerReviews();
 
+db.end();
+

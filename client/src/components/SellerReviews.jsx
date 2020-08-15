@@ -35,7 +35,7 @@ class SellerReviews extends React.Component {
     if (this.state.dropClicked)
       return (
         <div>{<SellerReviewEntry reviews={this.state.reviews}/>}
-        <div className="button-align-center"><button className="button-view-all-reviews">View all reviews</button></div>
+        {/* <div className="button-align-center"><button className="button-view-all-reviews">View all reviews</button></div> */}
         </div>
       )
   }
