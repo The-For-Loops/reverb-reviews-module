@@ -8,14 +8,38 @@ class SellerReviewEntry extends React.Component {
     super(props);
 
     this.state = {
-
+      pageNum: 1
     }
+    this.pageNumSlicer = this.pageNumSlicer.bind(this);
+    this.nextPage = this.nextPage.bind(this);
+    this.prevPage = this.prevPage.bind(this);
+
+  }
+
+  pageNumSlicer(array) {
+    let n = this.state.pageNum;
+    let min = (n - 1) * 5;
+    let max = min + 5
+
+    return array.slice(min, max)
+  }
+
+  nextPage() {
+    this.setState({
+      pageNum: this.state.pageNum + 1
+    })
+  }
+
+  prevPage() {
+    this.setState({
+      pageNum: this.state.pageNum - 1
+    })
   }
 
 
   render() {
 
-    let reviewMap = this.props.reviews.map((review) => (
+    let reviewMap = this.pageNumSlicer(this.props.reviews).map((review) => (
 
       <div className="seller-review-individual" key={review.id}>
         {/* <li> */}
@@ -43,12 +67,27 @@ class SellerReviewEntry extends React.Component {
         {review.content}
         {/* </li> */}
       </div>
-
     ))
 
     return (
       <div>
-        {reviewMap}
+        <div>
+          {reviewMap}
+        </div>
+        <div className="page-numbers-container">
+          <ul>
+            <li className="page-number">
+              <a className="page-number-after" onClick={this.prevPage}>
+                Previous
+              </a>
+            </li>
+            <li className="page-number">
+              <a className="page-number-after" onClick={this.nextPage}>
+                Next
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     )
   }

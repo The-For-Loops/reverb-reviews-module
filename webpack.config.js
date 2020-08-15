@@ -7,14 +7,17 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          babelrc: false,
           options: {
-            presets: ['@babel/preset-react', '@babel/preset-env']
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+            plugins: ['@babel/plugin-syntax-jsx'       "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-transform-runtime"]
           }
         }
       }
     ]
   },
-   output: {
+  output: {
     filename: 'bundle.js',
     path: __dirname + '/client/dist'
   }

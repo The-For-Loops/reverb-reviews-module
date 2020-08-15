@@ -36,13 +36,13 @@ class ProductReviewEntry extends React.Component {
   nextPage() {
     this.setState({
       pageNum: this.state.pageNum + 1
-    }, () => console.log(this.state.pageNum))
+    })
   }
 
   prevPage() {
     this.setState({
       pageNum: this.state.pageNum - 1
-    }, () => console.log(this.state.pageNum))
+    })
   }
 
 
@@ -134,10 +134,8 @@ class ProductReviewEntry extends React.Component {
                 Next
               </a>
             </li>
-
           </ul>
         </div>
-
       </div>
     )
   }
