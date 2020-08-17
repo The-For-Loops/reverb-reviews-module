@@ -22,6 +22,18 @@ module.exports = {
       if (err) {
         callback(err);
       } else {
+        // only send back 100 at a time
+        // request should contain page number
+        // if no page number, send first 100
+        // else send page number * 100
+
+
+
+
+
+
+
+
         callback(null, results);
       }
     })

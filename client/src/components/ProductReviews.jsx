@@ -93,13 +93,13 @@ class ProductReviews extends React.Component {
           <div className={!this.state.dropClicked ? "review-container-collapsed" : "review-container-toggled"}>
             <div className={!this.state.dropClicked ? "review-header" : "review-header-toggled"} onClick={this.toggleDrop}>
 
-              <span><h3>Reviews of the {this.state.products[this.state.product_id].item}
+              <h3>Reviews of the {this.state.products[this.state.product_id].item}
                 <StarRatingComponent
                   name="rate1"
                   starCount={5}
                   value={5}
                   emptyStarColor={"#eee"}
-                /> ({this.state.reviews.length})</h3></span>
+                /> ({this.state.reviews.length})</h3>
 
 
             </div>

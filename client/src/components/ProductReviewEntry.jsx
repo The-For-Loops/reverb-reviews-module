@@ -45,20 +45,16 @@ class ProductReviewEntry extends React.Component {
     })
   }
 
-
-
   render() {
 
     let reviewMap = this.pageNumSlicer(this.props.reviews).map((review) => (
       <div key={review.id} className="product-review-individual">
-
         <div className="product-user">
           <div style={{ width: '100px', textAlign: 'center', justifyContent: 'center', margin: '0 auto' }}>
             <img src={review.avatar} className="avatar-container" />
           </div>
           <div style={{ fontWeight: 'bold' }}>{review.reviewer}</div>
         </div>
-
         <div className="product-main">
           <div style={{ fontWeight: 'bold' }}>
             {review.title}
@@ -109,26 +105,6 @@ class ProductReviewEntry extends React.Component {
                 Previous
               </a>
             </li>
-            {/* <li className="page-number">
-              <a className="page-number-selected">
-                1
-              </a>
-            </li>
-            <li className="page-number">
-              <a className="page-number-after">
-                2
-              </a>
-            </li>
-            <li className="page-number">
-              <a className="page-number-after">
-                3
-              </a>
-            </li>
-            <li className="page-number">
-              <a className="page-number-after">
-                4
-              </a>
-            </li> */}
             <li className="page-number">
               <a className="page-number-after" onClick={this.nextPage}>
                 Next
