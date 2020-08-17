@@ -11,4 +11,7 @@ describe('SellerReviews', () => {
     const text = wrapper.find('div div h3');
     expect(text.text()).toBe('Seller Reviews <StarRatingComponent /> (0)');
   });
+
+
+
 })

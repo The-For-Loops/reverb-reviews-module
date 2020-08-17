@@ -17,6 +17,7 @@
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
     "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
@@ -26,7 +27,9 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.10.4",
     "axios": "^0.19.2",
+    "babel-core": "^6.26.3",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.1",
     "express": "^4.17.1",
