@@ -25,15 +25,19 @@ class SellerReviewEntry extends React.Component {
   }
 
   nextPage() {
-    this.setState({
-      pageNum: this.state.pageNum + 1
-    })
+    if (this.state.pageNum < (this.props.reviews.length / 5)) {
+      this.setState({
+        pageNum: this.state.pageNum + 1
+      })
+    }
   }
 
   prevPage() {
-    this.setState({
-      pageNum: this.state.pageNum - 1
-    })
+    if (this.state.pageNum > 1) {
+      this.setState({
+        pageNum: this.state.pageNum - 1
+      })
+    }
   }
 
 
@@ -42,7 +46,6 @@ class SellerReviewEntry extends React.Component {
     let reviewMap = this.pageNumSlicer(this.props.reviews).map((review) => (
 
       <div className="seller-review-individual" key={review.id}>
-        {/* <li> */}
         <div>
           <StarRatingComponent
             name="rate1"
@@ -65,7 +68,6 @@ class SellerReviewEntry extends React.Component {
         </div>
         <br></br>
         {review.content}
-        {/* </li> */}
       </div>
     ))
 
@@ -76,12 +78,12 @@ class SellerReviewEntry extends React.Component {
         </div>
         <div className="page-numbers-container">
           <ul>
-            <li className="page-number">
+            <li className={this.state.pageNum === 1 ? "page-number-limit" : "page-number"}>
               <a className="page-number-after" onClick={this.prevPage}>
                 Previous
               </a>
             </li>
-            <li className="page-number">
+            <li className={this.state.pageNum > this.props.reviews.length / 5 ? "page-number-limit" : "page-number"}>
               <a className="page-number-after" onClick={this.nextPage}>
                 Next
               </a>

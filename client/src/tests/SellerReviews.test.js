@@ -12,6 +12,19 @@ describe('SellerReviews', () => {
     expect(text.text()).toBe('Seller Reviews <StarRatingComponent /> (0)');
   });
 
+  it('should call the onClick function when dropdown is clicked', () => {
+    const wrapper = shallow(<SellerReviews />);
+    const mockedHandleClick = jest.fn();
+    wrapper.instance().handleClick = mockedHandleClick;
+    const dropdown = wrapper.find('div div');
+    console.log('dropdown: ', dropdown);
+    dropdown.onClick();
+    expect(mockedHandleClick).toHaveBeenCalledTimes(1);
+  });
+
+
+
+
 
 
 })

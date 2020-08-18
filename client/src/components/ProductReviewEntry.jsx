@@ -34,15 +34,19 @@ class ProductReviewEntry extends React.Component {
   }
 
   nextPage() {
-    this.setState({
-      pageNum: this.state.pageNum + 1
-    })
+    if (this.state.pageNum < (this.props.reviews.length / 5)) {
+      this.setState({
+        pageNum: this.state.pageNum + 1
+      })
+    }
   }
 
   prevPage() {
-    this.setState({
-      pageNum: this.state.pageNum - 1
-    })
+    if (this.state.pageNum > 1) {
+      this.setState({
+        pageNum: this.state.pageNum - 1
+      })
+    }
   }
 
   render() {
@@ -64,11 +68,9 @@ class ProductReviewEntry extends React.Component {
             starCount={5}
             value={review.rating}
             emptyStarColor={"#FFF0DA"}
-          // emptyStarColor="#ffb400"
           /> {} {} {}
           <span style={{ color: '#f6870f', fontWeight: 'bold' }}>Verified Purchase</span>
           <p>
-            {/* <span> */}
             <ShowMore
               text={review.content}
               length={170}
@@ -100,12 +102,12 @@ class ProductReviewEntry extends React.Component {
         </div>
         <div className="page-numbers-container">
           <ul>
-            <li className="page-number">
+            <li className={this.state.pageNum === 1 ? "page-number-limit" : "page-number"}>
               <a className="page-number-after" onClick={this.prevPage}>
                 Previous
               </a>
             </li>
-            <li className="page-number">
+            <li className={this.state.pageNum > this.props.reviews.length / 5 ? "page-number-limit" : "page-number"}>
               <a className="page-number-after" onClick={this.nextPage}>
                 Next
               </a>
