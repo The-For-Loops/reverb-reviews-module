@@ -34,22 +34,22 @@ class SellerReviews extends React.Component {
   displayReviews() {
     if (this.state.dropClicked)
       return (
-        <div>{<SellerReviewEntry reviews={this.state.reviews}/>}
-        {/* <div className="button-align-center"><button className="button-view-all-reviews">View all reviews</button></div> */}
+        <div>{<SellerReviewEntry reviews={this.state.reviews} />}
+          {/* <div className="button-align-center"><button className="button-view-all-reviews">View all reviews</button></div> */}
         </div>
       )
   }
 
   getReviews() {
     axios.get(`/api/sellerReviews/${this.state.product_id}`)
-    .then((results) => {
-      this.setState({
-        reviews: results.data
+      .then((results) => {
+        this.setState({
+          reviews: results.data
+        })
       })
-    })
-    .catch((err) => {
-      console.error(err)
-    })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
 
@@ -58,13 +58,15 @@ class SellerReviews extends React.Component {
     return (
       <div className={!this.state.dropClicked ? "review-container-collapsed" : "review-container-toggled"}>
         <div className={!this.state.dropClicked ? "review-header" : "review-header-toggled"} onClick={this.toggleDrop}>
-          <h3>Seller Reviews <StarRatingComponent
-                name="rate1"
-                starCount={5}
-                value={5}
-              /> ({this.state.reviews.length})</h3>
+          <div className="container-header">
+            <h3>Seller Reviews <StarRatingComponent
+              name="rate1"
+              starCount={5}
+              value={5}
+            /> ({this.state.reviews.length})</h3>
           </div>
-          {this.displayReviews()}
+        </div>
+        {this.displayReviews()}
       </div>
     )
   }

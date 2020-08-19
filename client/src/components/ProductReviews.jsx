@@ -49,7 +49,7 @@ class ProductReviews extends React.Component {
     if (this.state.dropClicked)
       return (
         <div>
-        <Modal showModal={this.state.showModal} toggleModal={this.toggleModal}/>
+          <Modal showModal={this.state.showModal} toggleModal={this.toggleModal} />
           <div className="write-review-text">
             <span>Help another musician by sharing your experience!</span><button className="button-write-review" onClick={this.toggleModal}>Write a Product Review</button>
           </div>
@@ -92,16 +92,15 @@ class ProductReviews extends React.Component {
 
           <div className={!this.state.dropClicked ? "review-container-collapsed" : "review-container-toggled"}>
             <div className={!this.state.dropClicked ? "review-header" : "review-header-toggled"} onClick={this.toggleDrop}>
-
-              <h3>Reviews of the {this.state.products[this.state.product_id].item}
-                <StarRatingComponent
-                  name="rate1"
-                  starCount={5}
-                  value={5}
-                  emptyStarColor={"#eee"}
-                /> ({this.state.reviews.length})</h3>
-
-
+              <div className="container-header">
+                <h3>Reviews of the {this.state.products[this.state.product_id].item}
+                  <StarRatingComponent
+                    name="rate1"
+                    starCount={5}
+                    value={5}
+                    emptyStarColor={"#eee"}
+                  /> ({this.state.reviews.length})</h3>
+              </div>
             </div>
             {this.displayReviews()}
           </div>

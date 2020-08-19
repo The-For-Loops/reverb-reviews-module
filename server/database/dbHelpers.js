@@ -27,13 +27,6 @@ module.exports = {
         // if no page number, send first 100
         // else send page number * 100
 
-
-
-
-
-
-
-
         callback(null, results);
       }
     })

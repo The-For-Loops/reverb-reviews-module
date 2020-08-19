@@ -8,7 +8,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('SellerReviews', () => {
   it('should show text', () => {
     const wrapper = shallow(<SellerReviews />);
-    const text = wrapper.find('div div h3');
+    const text = wrapper.find('div div div');
     expect(text.text()).toBe('Seller Reviews <StarRatingComponent /> (0)');
   });
 
