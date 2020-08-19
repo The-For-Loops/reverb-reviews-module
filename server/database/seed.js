@@ -55,7 +55,7 @@ let createReviewProduct = () => {
 
 let createReviews = () => {
   let reviewsArr = [];
-  for(let i = 0; i < 1000; i++){
+  for(let i = 0; i < 4000; i++){
     reviewsArr.push(createReviewProduct());
   }
   return reviewsArr;
@@ -91,7 +91,7 @@ let createSellerReview = () => {
 
 let createSellerReviews = () => {
   let sellerReviewsArr = [];
-  for(let i = 0; i < 1000; i++){
+  for(let i = 0; i < 4000; i++){
     sellerReviewsArr.push(createSellerReview());
   }
   return sellerReviewsArr;
