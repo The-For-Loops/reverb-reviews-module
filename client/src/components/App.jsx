@@ -41,6 +41,7 @@ class App extends React.Component {
           {<ProductReviews products={this.state.products} />}<br></br>
         </div>
         <div className="review-sidebar">
+          <div className="space-filler-sidebar"><p></p></div>
         </div>
       </div>
     )
