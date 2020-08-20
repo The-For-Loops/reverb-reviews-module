@@ -30,6 +30,8 @@ ul {
   margin-left: -.8vw;
   margin-right: 0.2vw;
   padding-left: 20px;
+  /* justify-content: center; */
+  /* text-align: center; */
 }
 
 /*===================================
@@ -92,8 +94,10 @@ Modal
 .review-main-content {
   box-sizing: border-box;
   margin-right: 35px;
-  width: 100%;
-  padding-left: 5%;
+  /* width: 100%; */
+  /* padding-left: 5%; */
+  flex-basis: 45%;
+
 }
 
 .review-sidebar {
