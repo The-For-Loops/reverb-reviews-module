@@ -60,7 +60,7 @@ class ProductReviews extends React.Component {
   }
 
   getReviews() {
-    axios.get(`/api/productReviews/${this.state.product_id}`)
+    axios.get(`/api/reviews/productReviews/${this.state.product_id}`)
       .then((results) => {
         this.setState({
           reviews: results.data
@@ -73,7 +73,7 @@ class ProductReviews extends React.Component {
 
 
   getProducts() {
-    axios.get(`/api/allProducts/`)
+    axios.get(`/api/reviews/allProducts`)
       .then((results) => {
         this.setState({
           products: results.data

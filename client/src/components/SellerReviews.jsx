@@ -41,7 +41,7 @@ class SellerReviews extends React.Component {
   }
 
   getReviews() {
-    axios.get(`/api/sellerReviews/${this.state.product_id}`)
+    axios.get(`/api/reviews/sellerReviews/${this.state.product_id}`)
       .then((results) => {
         this.setState({
           reviews: results.data
