@@ -1,10 +1,8 @@
 import React from 'react';
-import faker from 'faker';
 import axios from 'axios';
 import ProductReviewEntry from './ProductReviewEntry.jsx';
 import StarRatingComponent from 'react-star-rating-component';
 import Modal from './Modal.jsx';
-
 
 class ProductReviews extends React.Component {
   constructor(props) {
@@ -23,26 +21,24 @@ class ProductReviews extends React.Component {
     this.getProducts = this.getProducts.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
 
-  }
-
+  };
 
   toggleModal() {
     this.setState({
       showModal: !this.state.showModal
     })
-  }
-
+  };
 
   componentDidMount() {
     this.getProducts();
     this.getReviews();
-  }
+  };
 
   toggleDrop() {
     this.setState({
       dropClicked: !this.state.dropClicked
     })
-  }
+  };
 
   displayReviews() {
     if (this.state.dropClicked)
@@ -56,7 +52,7 @@ class ProductReviews extends React.Component {
           </div >
         </div>
       )
-  }
+  };
 
   getReviews() {
     axios.get(`/api/reviews/productReviews/${this.state.product_id}`)
@@ -68,8 +64,7 @@ class ProductReviews extends React.Component {
       .catch((err) => {
         console.error(err)
       })
-  }
-
+  };
 
   getProducts() {
     axios.get(`/api/reviews/allProducts`)
@@ -81,15 +76,12 @@ class ProductReviews extends React.Component {
       .catch((err) => {
         console.error(err)
       })
-  }
-
+  };
 
   render() {
-    // let { id } = useParams();
     {
       if (this.state.products.length) {
         return (
-
           <div className={!this.state.dropClicked ? "review-container-collapsed" : "review-container-toggled"}>
             <div className={!this.state.dropClicked ? "review-header" : "review-header-toggled"} onClick={this.toggleDrop}>
               <div className="container-header">
@@ -104,15 +96,11 @@ class ProductReviews extends React.Component {
             </div>
             {this.displayReviews()}
           </div>
-
-
         )
       }
     }
     return ('')
-
-
-  }
-}
+  };
+};
 
 export default ProductReviews;

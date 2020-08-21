@@ -1,32 +1,27 @@
 import React from 'react';
 
-
 class Modal extends React.Component {
-
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       isChecked: true
     }
+
     this.toggleCheck = this.toggleCheck.bind(this);
-  }
+  };
 
   toggleCheck(e) {
     this.setState({
       isChecked: !this.state.isChecked
     })
-  }
-
-
+  };
 
   render() {
     return (
       <div id="myModal" className={this.props.showModal ? 'openedReviewModal' : 'closedModal'}>
-
         <div className="modal-content">
           <span className="close" onClick={this.props.toggleModal}>&times;</span>
-
           <div>
             <span>Sign Up</span> {}
             <span>Log In</span>
@@ -48,14 +43,12 @@ class Modal extends React.Component {
               </label>
             </div>
             <div>
-
               <label>
                 Email
             <input type="text" name="name" />
               </label>
             </div>
             <div>
-
               <label>
                 Email Confirmation
             <input type="text" name="name" />
@@ -68,31 +61,24 @@ class Modal extends React.Component {
               </label>
             </div>
             <div>
-
               <input type="submit" value="Sign Up" />
             </div>
-
             <div>
               <p>
                 <input type="checkbox" checked={this.state.isChecked} onChange={(e) => this.toggleCheck(e)} /> Get the latest news, deals, and promotions via email
             </p>
             </div>
             <div>
-
               <p>
                 <input type="checkbox" checked={this.state.isChecked} onChange={(e) => this.toggleCheck(e)} />By clicking Sign Up, I expressly agree to accept Reverb’s Terms of Use and Privacy Policy - REQUIRED
             </p>
             </div>
-
-
           </form>
-
         </div>
-
       </div>
     )
-  }
-}
+  };
+};
 
 export default Modal;
 

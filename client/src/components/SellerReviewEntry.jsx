@@ -2,7 +2,6 @@ import React from 'react';
 import faker from 'faker';
 import StarRatingComponent from 'react-star-rating-component';
 
-
 class SellerReviewEntry extends React.Component {
   constructor(props) {
     super(props);
@@ -10,11 +9,12 @@ class SellerReviewEntry extends React.Component {
     this.state = {
       pageNum: 1
     }
+
     this.pageNumSlicer = this.pageNumSlicer.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
 
-  }
+  };
 
   pageNumSlicer(array) {
     let n = this.state.pageNum;
@@ -22,7 +22,7 @@ class SellerReviewEntry extends React.Component {
     let max = min + 5
 
     return array.slice(min, max)
-  }
+  };
 
   nextPage() {
     if (this.state.pageNum < (this.props.reviews.length / 5)) {
@@ -30,7 +30,7 @@ class SellerReviewEntry extends React.Component {
         pageNum: this.state.pageNum + 1
       })
     }
-  }
+  };
 
   prevPage() {
     if (this.state.pageNum > 1) {
@@ -38,13 +38,10 @@ class SellerReviewEntry extends React.Component {
         pageNum: this.state.pageNum - 1
       })
     }
-  }
-
+  };
 
   render() {
-
     let reviewMap = this.pageNumSlicer(this.props.reviews).map((review) => (
-
       <div className="seller-review-individual" key={review.id}>
         <div>
           <StarRatingComponent
@@ -92,8 +89,7 @@ class SellerReviewEntry extends React.Component {
         </div>
       </div>
     )
-  }
-}
-
+  };
+};
 
 export default SellerReviewEntry;

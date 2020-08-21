@@ -1,5 +1,4 @@
 import React from 'react';
-import faker from 'faker';
 import StarRatingComponent from 'react-star-rating-component';
 import ShowMore from "react-simple-show-more";
 
@@ -15,7 +14,7 @@ class ProductReviewEntry extends React.Component {
     this.pageNumSlicer = this.pageNumSlicer.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
-  }
+  };
 
   checksHelpful(number) {
     if (number === 1) {
@@ -23,7 +22,7 @@ class ProductReviewEntry extends React.Component {
     } else {
       return "people"
     }
-  }
+  };
 
   pageNumSlicer(array) {
     let n = this.state.pageNum;
@@ -31,7 +30,7 @@ class ProductReviewEntry extends React.Component {
     let max = min + 5
 
     return array.slice(min, max)
-  }
+  };
 
   nextPage() {
     if (this.state.pageNum < (this.props.reviews.length / 5)) {
@@ -39,7 +38,7 @@ class ProductReviewEntry extends React.Component {
         pageNum: this.state.pageNum + 1
       })
     }
-  }
+  };
 
   prevPage() {
     if (this.state.pageNum > 1) {
@@ -47,7 +46,7 @@ class ProductReviewEntry extends React.Component {
         pageNum: this.state.pageNum - 1
       })
     }
-  }
+  };
 
   render() {
 
@@ -116,7 +115,7 @@ class ProductReviewEntry extends React.Component {
         </div>
       </div>
     )
-  }
+  };
 }
 
 export default ProductReviewEntry;

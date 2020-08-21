@@ -17,7 +17,4 @@ describe('SellerReviews', () => {
     expect(wrapper.state('dropClicked')).toBe(false);
   });
 
-
-
-
 });

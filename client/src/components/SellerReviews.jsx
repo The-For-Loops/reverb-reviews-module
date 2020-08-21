@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import faker from 'faker';
 import SellerReviewEntry from './SellerReviewEntry.jsx';
 import StarRatingComponent from 'react-star-rating-component';
 
@@ -12,24 +11,23 @@ class SellerReviews extends React.Component {
       dropClicked: false,
       product_id: window.location.pathname.slice(1, -1),
       reviews: []
-
     }
 
     this.toggleDrop = this.toggleDrop.bind(this);
     this.displayReviews = this.displayReviews.bind(this);
     this.getReviews = this.getReviews.bind(this);
 
-  }
+  };
 
   componentDidMount() {
     this.getReviews();
-  }
+  };
 
   toggleDrop() {
     this.setState({
       dropClicked: !this.state.dropClicked
     })
-  }
+  };
 
   displayReviews() {
     if (this.state.dropClicked)
@@ -37,7 +35,7 @@ class SellerReviews extends React.Component {
         <div>{<SellerReviewEntry reviews={this.state.reviews} />}
         </div>
       )
-  }
+  };
 
   getReviews() {
     axios.get(`/api/reviews/sellerReviews/${this.state.product_id}`)
@@ -49,11 +47,10 @@ class SellerReviews extends React.Component {
       .catch((err) => {
         console.error(err)
       })
-  }
+  };
 
 
   render() {
-
     return (
       <div className={!this.state.dropClicked ? "review-container-collapsed" : "review-container-toggled"}>
         <div className={!this.state.dropClicked ? "review-header" : "review-header-toggled"} onClick={this.toggleDrop}>
@@ -68,7 +65,7 @@ class SellerReviews extends React.Component {
         {this.displayReviews()}
       </div>
     )
-  }
-}
+  };
+};
 
 export default SellerReviews;
