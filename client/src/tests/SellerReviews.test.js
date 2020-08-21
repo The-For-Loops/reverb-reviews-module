@@ -12,9 +12,6 @@ describe('SellerReviews', () => {
     expect(text.text()).toBe('Seller Reviews <StarRatingComponent /> (0)');
   });
 
-
-
-
   it('should not have dropdown clicked upon page render', () => {
     const wrapper = shallow(<SellerReviews/>);
     expect(wrapper.state('dropClicked')).toBe(false);

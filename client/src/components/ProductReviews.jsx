@@ -6,14 +6,13 @@ import StarRatingComponent from 'react-star-rating-component';
 import Modal from './Modal.jsx';
 
 
-
 class ProductReviews extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       dropClicked: false,
-      product_id: 10,
+      product_id: window.location.pathname.slice(1, -1),
       reviews: [],
       products: [],
       showModal: false
@@ -86,6 +85,7 @@ class ProductReviews extends React.Component {
 
 
   render() {
+    // let { id } = useParams();
     {
       if (this.state.products.length) {
         return (
