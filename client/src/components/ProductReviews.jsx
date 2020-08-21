@@ -20,6 +20,7 @@ class ProductReviews extends React.Component {
     this.getReviews = this.getReviews.bind(this);
     this.getProducts = this.getProducts.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.getProductAverage = this.getProductAverage.bind(this);
 
   };
 
@@ -32,6 +33,7 @@ class ProductReviews extends React.Component {
   componentDidMount() {
     this.getProducts();
     this.getReviews();
+    this.getProductAverage();
   };
 
   toggleDrop() {
@@ -78,6 +80,19 @@ class ProductReviews extends React.Component {
       })
   };
 
+  getProductAverage() {
+    let total = 0;
+    this.state.reviews.forEach((review) => {
+      total += review.rating
+      console.log('rating: ', review.rating)
+    })
+
+
+    console.log(total);
+    return Math.floor((total / this.state.reviews.length));
+
+  };
+
   render() {
     {
       if (this.state.products.length) {
@@ -89,8 +104,8 @@ class ProductReviews extends React.Component {
                   <StarRatingComponent
                     name="rate1"
                     starCount={5}
-                    value={5}
-                    emptyStarColor={"#eee"}
+                    value={this.getProductAverage()}
+                    emptyStarColor={"#FFF0DA"}
                   /> ({this.state.reviews.length})</h3>
               </div>
             </div>
