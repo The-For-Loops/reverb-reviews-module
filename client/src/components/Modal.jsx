@@ -22,7 +22,7 @@ class Modal extends React.Component {
 
   render() {
     return (
-      <div id="myModal" className={this.props.showModal ? 'openedModal' : 'closedModal'}>
+      <div id="myModal" className={this.props.showModal ? 'openedReviewModal' : 'closedModal'}>
 
         <div className="modal-content">
           <span className="close" onClick={this.props.toggleModal}>&times;</span>
